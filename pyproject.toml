@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "anonymous-chat-room"
+version = "0.1.0"
+description = ""
+authors = ["Dmytro Shyrokov <shyrokov.dmytro@proton.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = {extras = ["all"], version = "^0.111.0"}
+sqlalchemy = "^2.0.31"
+pydantic-settings = "^2.3.3"
+black = "^24.4.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
