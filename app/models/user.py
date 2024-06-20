@@ -13,7 +13,7 @@ if TYPE_CHECKING:
 class User(Base):
 
     username: Mapped[str] = mapped_column(String, unique=True, nullable=False)
-    messages: Mapped[list["Message"]] = relationship(back_populates="user")
+    messages: Mapped[list["Message"]] = relationship("Message", back_populates="owner")
     password: Mapped[str] = mapped_column(String, nullable=False)
     timestamp: Mapped[datetime] = mapped_column(
         server_default=func.now(), default=datetime.now

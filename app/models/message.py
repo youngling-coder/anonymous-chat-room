@@ -10,7 +10,7 @@ class Message(UserRelationMixin, Base):
 
     _user_back_populates = "messages"
 
-    content: Mapped[str] = mapped_column(String, unique=True, nullable=False)
+    content: Mapped[str] = mapped_column(String, nullable=False)
     timestamp: Mapped[datetime] = mapped_column(
         server_default=func.now(), default=datetime.now
     )
