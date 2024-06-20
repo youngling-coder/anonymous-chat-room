@@ -14,7 +14,7 @@ class CreateUser(BaseUser):
 class UserResponse(BaseUser):
     id: int
     timestamp: datetime
-    
+
     model_config = ConfigDict(from_attributes=True)
 
 

@@ -4,9 +4,11 @@ from ..database import get_db
 from .. import schemas
 
 
-router = APIRouter(tags=["User"])
+router = APIRouter(tags=["Users"])
 
 
-@router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserResponse)
+@router.post(
+    "/", status_code=status.HTTP_201_CREATED, response_model=schemas.UserResponse
+)
 def create_post(message: schemas.CreateUser, db: Session = Depends(get_db)):
     pass
