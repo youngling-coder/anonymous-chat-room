@@ -1,5 +1,6 @@
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict
+from typing import Optional
 
 
 class BaseUser(BaseModel):
@@ -12,6 +13,8 @@ class CreateUser(BaseUser):
 
 class UserResponse(BaseUser):
     id: int
+    timestamp: datetime
+    
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -28,3 +31,12 @@ class MessageResponse(Message):
     owner: UserResponse
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    id: Optional[str]
