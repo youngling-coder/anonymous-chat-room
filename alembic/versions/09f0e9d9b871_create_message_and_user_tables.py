@@ -1,8 +1,8 @@
-"""Create User and Message tables
+"""create message and user tables
 
-Revision ID: 28b488e24d39
+Revision ID: 09f0e9d9b871
 Revises: 
-Create Date: 2024-06-19 17:45:55.472874
+Create Date: 2024-06-20 16:10:42.549774
 
 """
 
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "28b488e24d39"
+revision: str = "09f0e9d9b871"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -32,6 +32,8 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
         sa.UniqueConstraint("username"),
     )
+
+    # TODO: Set ondelete behaviour as cascade
     op.create_table(
         "messages",
         sa.Column("content", sa.String(), nullable=False),
@@ -45,7 +47,6 @@ def upgrade() -> None:
             ["users.id"],
         ),
         sa.PrimaryKeyConstraint("id"),
-        sa.UniqueConstraint("content"),
     )
     # ### end Alembic commands ###
 
