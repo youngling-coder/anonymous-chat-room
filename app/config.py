@@ -7,9 +7,9 @@ class Settings(BaseSettings):
     db_host: str
     db_port: str
     db_name: str
-    # jwt_secret_key: str
-    # jwt_algo: str
-    # jwt_expire_minutes: int
+    jwt_secret_key: str
+    jwt_algo: str
+    jwt_expiration_time: int = 60
 
     class Config:
         env_file = ".env"
