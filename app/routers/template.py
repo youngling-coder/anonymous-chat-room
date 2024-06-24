@@ -9,15 +9,19 @@ templates = Jinja2Templates(directory=f"{BASE_DIR}/templates")
 
 router = APIRouter(tags=["Templates"])
 
+
 @router.get("/", response_class=HTMLResponse)
 def index_page(request: Request):
 
     return templates.TemplateResponse("index.html", {"request": request})
 
+
 @router.get("/users/{username}", response_class=HTMLResponse)
 def index_page(request: Request, username: str):
 
-    return templates.TemplateResponse("index.html", {"request": request, "username": username})
+    return templates.TemplateResponse(
+        "index.html", {"request": request, "username": username}
+    )
 
 
 @router.get("/login", response_class=HTMLResponse)

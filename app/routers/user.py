@@ -22,17 +22,16 @@ def create_user(user: schemas.CreateUser, db: Session = Depends(get_db)):
         db.refresh(new_user)
 
         return new_user
-    
+
     except IntegrityError as e:
         db.rollback()
         if isinstance(e.orig, psycopg2.errors.UniqueViolation):
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,
-                detail="User with such username already exists!"
+                detail="User with such username already exists!",
             )
         else:
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="Internal Server Error"
+                detail="Internal Server Error",
             )
-

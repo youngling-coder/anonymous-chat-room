@@ -8,7 +8,9 @@ router = APIRouter(tags=["Messages"])
 
 
 @router.post(
-    "/create", status_code=status.HTTP_201_CREATED, response_model=schemas.MessageResponse
+    "/create",
+    status_code=status.HTTP_201_CREATED,
+    response_model=schemas.MessageResponse,
 )
 def create_message(
     message: schemas.CreateMessage,
