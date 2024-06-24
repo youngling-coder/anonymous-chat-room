@@ -13,7 +13,6 @@ def login(
     user_credentials: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db),
 ):
-
     user = (
         db.query(models.User)
         .filter(models.User.username == user_credentials.username)
@@ -34,4 +33,10 @@ def login(
 
     access_token = oauth2.create_access_token(data={"id": user.id})
 
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": schemas.UserResponse(
+            username=user.username, id=user.id, timestamp=user.timestamp
+        ),
+    }
