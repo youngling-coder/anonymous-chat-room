@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body class="dark bg-gray-100 h-screen flex items-center justify-center">
+
+    {% if username %}
+        <h2 class="dark text-2xl font-bold mb-6">Hello, {{ username }}!</h2>
+    {% else %}
+        <h2 class="dark text-2xl font-bold mb-6">Hello, World!</h2>
+    {% endif %}
+    </body>
+{% endblock %}
