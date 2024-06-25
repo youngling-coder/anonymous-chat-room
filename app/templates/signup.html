@@ -32,7 +32,7 @@
             const rpassword = document.getElementById("rpassword").value;
 
             if (password !== rpassword) {
-                alert("Password do not match!");
+                showFlashNotification("red", "Passwords do not match!");
                 return;
             }
             
@@ -52,10 +52,10 @@
                     window.location.href = "{{ url_for('login_page') }}";
                 } else {
                     const errData = await response.json();
-                    alert(`Error: ${errData.detail}`);
+                    showFlashNotification("red", errData.detail);
                 }
             } catch (error) {
-                alert(`Error: ${error.detail}`);
+                console.log(`Error: ${error.detail}`);
             }
             
         });

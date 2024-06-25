@@ -40,7 +40,8 @@
             });
 
             if (!response.ok) {
-                throw new Error(`${response.status}: Failed to create message!`)
+                // throw new Error(`${response.status}:${response.statusText}`);
+                showFlashNotification("red", "Could not authenticate user!");
             }
 
             const data = await response.json();
