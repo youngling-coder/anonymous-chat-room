@@ -1,7 +1,7 @@
-function showNotification(color, text) {
+function showFlashNotification(color, text) {
     // Create notification container
     const notificationContainer = document.createElement('div');
-    notificationContainer.classList.add("hidden", "fixed", "bottom-5", "right-5", `bg-${color}-500`, "text-white", "p-4", "rounded-lg", "shadow-lg");
+    notificationContainer.classList.add("hidden", "fixed", "top-5", "right-5", `bg-${color}-500`, "text-white", "p-4", "rounded-lg", "shadow-lg");
 
     // Create notification text element
     const notificationText = document.createElement("p");
@@ -15,14 +15,14 @@ function showNotification(color, text) {
     notificationContainer.classList.remove('hidden');
     notificationContainer.classList.add("fade-in");
 
-    // Set timeout to fade out and hide notification
+    // Set timeout to fade out notification
     setTimeout(() => {
         notificationContainer.classList.remove("fade-in");
         notificationContainer.classList.add('fade-out');
     }, 2500);
 
-    // Set timeout to hide notification completely
+    // Set timeout to remove notification element from the DOM
     setTimeout(() => {
-        notificationContainer.classList.add('hidden');
+        notificationContainer.remove();
     }, 3000);
 }
