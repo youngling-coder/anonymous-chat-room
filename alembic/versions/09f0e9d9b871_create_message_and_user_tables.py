@@ -32,8 +32,7 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint("id"),
         sa.UniqueConstraint("username"),
     )
-
-    # TODO: Set ondelete behaviour as cascade
+    
     op.create_table(
         "messages",
         sa.Column("content", sa.String(), nullable=False),

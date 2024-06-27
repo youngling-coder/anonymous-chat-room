@@ -5,6 +5,8 @@ from .config import settings
 
 DATABASE_URL = f"postgresql://{settings.db_usr}:{settings.db_pwd}@{settings.db_host}:{settings.db_port}/{settings.db_name}"
 
+# TODO: change engine to async
+
 engine = create_engine(DATABASE_URL)
 
 local_session = sessionmaker(bind=engine, autocommit=False, autoflush=False)

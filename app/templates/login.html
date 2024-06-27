@@ -23,12 +23,10 @@
         document.getElementById("loginForm").addEventListener("submit", async function(event) {
             event.preventDefault();
 
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
             
-            // TODO: Implement flash messages via JS
             // TODO: Implement 404 error page
-            // TODO: Implement static js files
             
             if(password && username) {
                 try {
