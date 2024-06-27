@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="w-full max-w-4xl h-3/4 flex flex-col border rounded-lg shadow-lg bg-white">
+        <div class="w-full p-4 border-b">
+            <h2 class="text-xl p-2 bg-blue-500 rounded text-white font-semibold mb-4">{{ username }}</h2>
+        </div>
+            
+        <div class="w-full flex flex-col p-4 overflow-y-scroll flex-1">
+            <div id="messageContainer" class="flex-1 flex-col overflow-y-scroll max-h-1xl max-w-full mb-4 p-4 border rounded bg-gray-50">
+            </div>
+            
+            <form id="messageForm" class="flex">
+                <input id="messageInput" type="text" placeholder="Type your message..." class="flex-1 p-2 border rounded-l-lg focus:outline-none">
+                <button type="submit" class="p-2 bg-blue-500 text-white rounded-r-lg">Send</button>
+            </form>
+        </div>
+    </div>
+    
+
+    <script>
+
+        fetchLatestMessages();
+
+        document.getElementById('messageForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const messageInput = document.getElementById('messageInput');
+            const messageText = messageInput.value.trim();
+
+            if (messageText !== "") {
+                createMessage(messageText);
+            }
+        });
+    </script>
+</body>
+{% endblock %}
