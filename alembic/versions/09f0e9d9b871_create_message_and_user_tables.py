@@ -45,6 +45,7 @@ def upgrade() -> None:
         sa.ForeignKeyConstraint(
             ["owner_id"],
             ["users.id"],
+            ondelete="CASCADE"
         ),
         sa.PrimaryKeyConstraint("id"),
     )
