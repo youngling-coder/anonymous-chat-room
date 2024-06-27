@@ -45,8 +45,8 @@
 
                         window.localStorage.setItem("anonChatRoom", `${data.access_token}`);
                         
-                        const profilePageUrl = `{{ url_for('profile_page', username='${data.user.username}') }}`;
-                        window.location.href = profilePageUrl;
+                        const chatPageUrl = `{{ url_for('chat_page', username='${data.user.username}') }}`;
+                        window.location.href = chatPageUrl;
                     } else {
                         const errData = await response.json();
                         showFlashNotification("red", errData.detail);
