@@ -1,7 +1,5 @@
-from datetime import datetime
-
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, func
+from sqlalchemy import String
 from .base import Base
 from .mixins import UserRelationMixin
 
@@ -11,9 +9,6 @@ class Message(UserRelationMixin, Base):
     _user_back_populates = "messages"
 
     content: Mapped[str] = mapped_column(String, nullable=False)
-    timestamp: Mapped[datetime] = mapped_column(
-        server_default=func.now(), default=datetime.now
-    )
 
     def __repr__(self) -> str:
         return f"{self.__class__.__name__} (id={self.id}, content={self.content}, owner_id={self.owner.id})"
