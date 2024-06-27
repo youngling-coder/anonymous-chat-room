@@ -30,11 +30,19 @@ def create_message(
 
 
 @router.get("/get_latest", response_model=list[schemas.MessageResponse])
-def get_latest_messages(timestamp: str, db: Session = Depends(get_db), current_user=Depends(oauth2.get_current_user)):
+def get_latest_messages(
+    timestamp: str,
+    db: Session = Depends(get_db),
+    current_user=Depends(oauth2.get_current_user),
+):
 
     from_timestamp = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
 
-    messages = db.query(models.Message).filter(models.Message.timestamp >= from_timestamp).all()
+    messages = (
+        db.query(models.Message)
+        .filter(models.Message.timestamp >= from_timestamp)
+        .all()
+    )
 
     if not messages:
         return Response(status_code=status.HTTP_204_NO_CONTENT)

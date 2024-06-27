@@ -14,7 +14,6 @@ class User(Base):
     messages: Mapped[list["Message"]] = relationship("Message", back_populates="owner")
     password: Mapped[str] = mapped_column(String, nullable=False)
 
-
     def __repr__(self) -> str:
         return f"{self.__class__.__name__} (id={self.id}, username={self.username})"
 

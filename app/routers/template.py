@@ -39,4 +39,6 @@ def signup_page(request: Request):
 @router.get("/chat/{username}", response_class=HTMLResponse)
 def chat_page(request: Request, username: str):
 
-    return templates.TemplateResponse("chat.html", {"request": request, "username": username})
+    return templates.TemplateResponse(
+        "chat.html", {"request": request, "username": username}
+    )
