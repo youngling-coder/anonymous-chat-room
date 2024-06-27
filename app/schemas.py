@@ -3,15 +3,15 @@ from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
 
-class BaseUser(BaseModel):
+class User(BaseModel):
     username: str
 
 
-class CreateUser(BaseUser):
+class CreateUser(User):
     password: str
 
 
-class UserResponse(BaseUser):
+class UserResponse(User):
     id: int
     timestamp: datetime
 
